@@ -52,7 +52,7 @@ async function showtrivia(event) {
     displayQastTable(oneQuestions);
     i = i + 1;
   } catch (error) {
-    alert("Error getting users. Error: " + error);
+    alert(error);
   }
 }
 
