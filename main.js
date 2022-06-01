@@ -4,6 +4,7 @@ var i = 0;
 var theTemp = "";
 var contentHTML = "";
 var trivia = "";
+var oneQuestions = "";
 
 function nextQ() {
   const test = document.querySelector("button");
@@ -39,20 +40,36 @@ function myFunction(event) {
 
 async function onLoad() {
   trivia = await getTriviaAsync();
+  console.log("trivia on load: ", trivia);
 }
 
 //פונ' ראשית בכפתור
 async function showtrivia(event) {
   try {
+    console.log("TheArrayQuestions[i]", oneQuestions);
+    console.log("test");
+
     theTemp = document.getElementById("qast");
     event.target.innerHTML = "לשאלה הבאה";
+    console.log("test2");
+
     //מושך את השאלות
     const TheArrayQuestions = trivia.results;
-    var oneQuestions = TheArrayQuestions[i];
+    console.log("test3");
+
+    oneQuestions = TheArrayQuestions[i];
+    console.log("test4");
+    if (oneQuestions === undefined) {
+      alert("Thank you very much, we will get back to you as soon as possible");
+    }
     displayQastTable(oneQuestions);
+    console.log("test5");
+
     i = i + 1;
   } catch (error) {
-    alert(error);
+    if (oneQuestions !== undefined) {
+      alert(error);
+    }
   }
 }
 
